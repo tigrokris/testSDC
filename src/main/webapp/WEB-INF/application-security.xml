@@ -18,12 +18,13 @@
 		<intercept-url pattern="/register" access="permitAll"/>
 
 
-		<intercept-url pattern="/" access="isAuthenticated()"/>
+		<intercept-url pattern="/**" access="isAuthenticated()"/>
 
 		<form-login login-page="/login" default-target-url="/hello"
 					authentication-failure-url="/login?error=true"
 					login-processing-url="/spring_security_check"/>
-		<logout logout-success-url="/login"/>
+		<logout logout-success-url="/login"
+				delete-cookies="JSESSIONID" />
 
 		<csrf disabled="true"/>
 
